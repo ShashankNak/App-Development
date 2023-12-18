@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "21792822880",
+    "project_id": "dummy-whatsapp-a11da",
+    "storage_bucket": "dummy-whatsapp-a11da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21792822880:android:b012c4623d98277efa5505",
+        "android_client_info": {
+          "package_name": "com.example.whatsapp_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6PuobK-ne8S3pk1Eg3gWD43pEda3S3rc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
