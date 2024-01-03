@@ -75,7 +75,26 @@ class Settings extends StatelessWidget {
                     ListTile(
                       onTap: controller.isLoading.value
                           ? () {}
-                          : controller.deleteAllChatHistory,
+                          : () {
+                              Get.defaultDialog(
+                                  title: "Delete History",
+                                  backgroundColor: Colors.white60,
+                                  middleText:
+                                      "Are you sure want to delete all history?",
+                                  middleTextStyle: Get.textTheme.bodyLarge!
+                                      .copyWith(
+                                          color: Get
+                                              .theme.colorScheme.onBackground),
+                                  onConfirm: () {
+                                    Get.back();
+                                    controller.deleteAllChatHistory();
+                                  },
+                                  cancelTextColor:
+                                      Get.theme.colorScheme.onBackground,
+                                  onCancel: () {},
+                                  confirmTextColor:
+                                      Get.theme.colorScheme.onBackground);
+                            },
                       leading: const Icon(
                         Icons.delete_forever,
                         color: Colors.red,
@@ -96,7 +115,29 @@ class Settings extends StatelessWidget {
                       ),
                     ),
                     ListTile(
-                      onTap: controller.removeApi,
+                      onTap: controller.isLoading.value
+                          ? () {}
+                          : () {
+                              Get.defaultDialog(
+                                  title: "Remove ApiKey",
+                                  backgroundColor: Colors.white60,
+                                  middleText:
+                                      "Are you sure want to remove Api Key?",
+                                  middleTextStyle: Get.textTheme.bodyLarge!
+                                      .copyWith(
+                                          color: Get
+                                              .theme.colorScheme.onBackground),
+                                  cancelTextColor:
+                                      Get.theme.colorScheme.onBackground,
+                                  onConfirm: () {
+                                    Get.back();
+                                    controller.removeApi();
+                                  },
+                                  onCancel: () {},
+                                  confirmTextColor:
+                                      Get.theme.colorScheme.onBackground);
+                            },
+                      // onTap: controller.removeApi,
                       leading: Icon(
                         Icons.key_off_outlined,
                         color: Get.theme.colorScheme.onBackground,

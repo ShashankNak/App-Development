@@ -44,7 +44,11 @@ class ChatController extends GetxController {
       log(value);
       Gemini.init(apiKey: value, enableDebugging: true);
     } else {
-      Get.off(() => const StartScreen());
+      Get.offUntil(
+          GetPageRoute(
+              page: () => const StartScreen(),
+              transition: Transition.leftToRightWithFade),
+          (route) => false);
     }
   }
 

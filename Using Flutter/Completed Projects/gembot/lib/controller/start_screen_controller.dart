@@ -17,7 +17,7 @@ class StartScreenController extends GetxController {
   Future<void> launchInBrowser(Uri url) async {
     try {
       if (await canLaunchUrl(url)) {
-        await launchUrl(url, mode: LaunchMode.inAppWebView);
+        await launchUrl(url, mode: LaunchMode.platformDefault);
       } else {
         throw 'Could not launch $url';
       }
@@ -40,8 +40,13 @@ class StartScreenController extends GetxController {
         Gemini.init(apiKey: value, enableDebugging: true);
         isLoading(false);
         update();
-        Get.off(() => const ChatScreen(timehistory: []),
-            transition: Transition.rightToLeftWithFade);
+        Get.offUntil(
+            GetPageRoute(
+                page: () => const ChatScreen(
+                      timehistory: [],
+                    ),
+                transition: Transition.rightToLeftWithFade),
+            (route) => false);
       } else {
         isLoading(false);
         update();

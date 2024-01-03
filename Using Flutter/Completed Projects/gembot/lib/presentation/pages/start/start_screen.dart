@@ -94,7 +94,9 @@ class _StartScreenState extends State<StartScreen>
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Image.asset(
-                      "assets/images/app_icon.png",
+                      Get.isDarkMode
+                          ? "assets/images/dark_icon.png"
+                          : "assets/images/light_icon.png",
                       width: size.shortestSide / 3,
                     ),
                     DefaultTextStyle(
