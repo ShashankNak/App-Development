@@ -2,13 +2,16 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:chatbot/model/chat_model.dart';
 import 'package:chatbot/model/time_model.dart';
+import 'package:chatbot/model/voice.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ChatHistoryStorage {
   static const String _chatkey = 'chatHistory';
   static const String _timekey = 'timeHistory';
-  static const String _isNew = 'isNew';
+  static const String _apikey = 'apiKey';
+  static const String _voicekey = 'voiceKey';
 
+  //SAVING TIMEHISTORY LIST OF TIME
   static Future<void> saveTimeHistory(List<TimeModel> timeHistory) async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -24,6 +27,7 @@ class ChatHistoryStorage {
     }
   }
 
+  //GETTING TIMEHISTORY
   static Future<List<TimeModel>> getTimeHistory() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -41,6 +45,7 @@ class ChatHistoryStorage {
     }
   }
 
+  //REMOVE SPECIFIC CHAT BASED ON TIME
   static Future<bool> removeChat(String time) async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -85,22 +90,77 @@ class ChatHistoryStorage {
     }
   }
 
-  static Future<bool> getisNew() async {
-    final prefs = await SharedPreferences.getInstance();
-
-    return prefs.getBool(_isNew) ?? true;
-  }
-
-  // Setter for the boolean value
-  static Future<void> setisNew(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-
-    await prefs.setBool(_isNew, value);
-  }
-
+  //CLEARING THE LOCAL STORAGE JUST FOR DEBUGGING
   static Future<bool> clear() async {
     final prefs = await SharedPreferences.getInstance();
 
     return await prefs.clear();
+  }
+
+  //GET THE SAVED API
+  static Future<String> getApiKey() async {
+    final prefs = await SharedPreferences.getInstance();
+    try {
+      return prefs.getString(_apikey) ?? "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  //SAVE THE API
+  static Future<bool> setApiKey(String api) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      return await prefs.setString(_apikey, api);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  //DELETE ALL THE TIME HISTORY AND THE CHATS
+  static Future<bool> deleteAllData(List<TimeModel> timeHistory) async {
+    try {
+      if (timeHistory.isEmpty) {
+        return true;
+      }
+      final prefs = await SharedPreferences.getInstance();
+      for (var x in timeHistory) {
+        if (await prefs.remove("$_chatkey/${x.time}")) {
+          continue;
+        } else {
+          return false;
+        }
+      }
+      return await prefs.remove(_timekey);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  //GET THE CURRENT VOICE OF THE MODEL
+  static Future<Voice> getVoice() async {
+    final prefs = await SharedPreferences.getInstance();
+    try {
+      final value = prefs.getString(_voicekey);
+      if (value != null) {
+        final voice = Voice.fromString(value);
+        return voice;
+      } else {
+        throw "";
+      }
+    } catch (e) {
+      return Voice(name: "en-US-Language", locale: "en-US");
+    }
+  }
+
+  //SAVE THE VOICE OF THE MODEL
+  static Future<bool> setVoice(Voice v) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final value = await prefs.setString(_voicekey, v.toString());
+      return value;
+    } catch (e) {
+      return false;
+    }
   }
 }

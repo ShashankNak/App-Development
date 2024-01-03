@@ -38,14 +38,19 @@ dependencies:
   flutter_gemini: ^1.0.1
   animated_text_kit: ^4.2.2
   image_picker: ^1.0.5
+  lottie: ^2.7.0
+  google_fonts: ^6.1.0
+
 
   get: ^4.6.6
   shared_preferences: ^2.2.2
+  url_launcher: ^6.2.2
 
 
-  hive: ^4.0.0-dev.2
-  isar_flutter_libs: ^4.0.0-dev.13
-  path_provider: ^2.1.0
+
+  http: ^1.1.2
+  flutter_tts: ^3.8.5
+  flutter_image_compress: ^2.1.0
 
   
 dev_dependencies:
@@ -71,8 +76,19 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/lottie/loading.json
+    - assets/lottie/loading2.json
+    - assets/lottie/menu.json
+    - assets/lottie/menu2.json
+    - assets/lottie/send.json
+    - assets/lottie/send2.json
+    - assets/lottie/send3.json
+
+
+    - assets/images/menu.png
+    - assets/images/dark_icon.png
+    - assets/images/light_icon.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

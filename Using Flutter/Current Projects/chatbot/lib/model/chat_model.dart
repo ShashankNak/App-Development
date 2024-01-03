@@ -8,7 +8,7 @@ class ChatModel {
   factory ChatModel.fromMap(Map<String, dynamic> map) {
     return ChatModel(
       text: map['text'],
-      isMe: map['isMe'] == 1,
+      isMe: map['isMe'] == '1',
       img: map['img'],
     );
   }
