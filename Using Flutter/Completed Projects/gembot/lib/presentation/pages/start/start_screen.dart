@@ -27,7 +27,6 @@ class _StartScreenState extends State<StartScreen>
 
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 5),
     );
     _backgroundColor = _getRandomColor();
     _textColor = _getContrastingTextColor(_backgroundColor);
