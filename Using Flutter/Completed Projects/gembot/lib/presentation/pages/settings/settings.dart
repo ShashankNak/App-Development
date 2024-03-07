@@ -54,7 +54,7 @@ class Settings extends StatelessWidget {
                         "View Details",
                         style: Get.textTheme.bodyLarge!.copyWith(
                           color: Get.theme.colorScheme.onBackground,
-                          fontSize: size.shortestSide / 25,
+                          fontSize: Get.size.shortestSide / 25,
                         ),
                       ),
                       trailing: const Icon(Icons.more_vert),

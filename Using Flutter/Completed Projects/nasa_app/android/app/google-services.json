@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1079367096564",
+    "project_id": "nasa-app-2bc87",
+    "storage_bucket": "nasa-app-2bc87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079367096564:android:8d08c54f3b9bf648bf66a1",
+        "android_client_info": {
+          "package_name": "com.example.nasa_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJJ5ec8LbiLqefN3QYu_hSVn19qay9IM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
